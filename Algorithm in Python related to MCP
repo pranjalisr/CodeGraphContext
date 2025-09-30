@@ -1,0 +1,35 @@
+from mcp.server.fastmcp import FastMCP
+
+# Initialize the MCP server with a name
+mcp = FastMCP("MyMCPTools")
+
+# Define a tool to reverse a string
+@mcp.tool()
+async def reverse_string(text: str) -> str:
+    """
+    Reverses the input string.
+    Args:
+        text: The string to be reversed.
+    Returns:
+        The reversed string.
+    """
+    return text[::-1]
+
+# Define another tool to calculate the square of a number
+@mcp.tool()
+async def calculate_square(number: int) -> int:
+    """
+    Calculates the square of an integer.
+    Args:
+        number: The integer for which to calculate the square.
+    Returns:
+        The square of the number.
+    """
+    return number * number
+
+# Run the MCP server
+if __name__ == "__main__":
+    # In a real-world scenario, you might run this with a specific transport
+    # like "stdio" for agent communication or a web server transport.
+    # For a simple local run, you can use:
+    mcp.run()
